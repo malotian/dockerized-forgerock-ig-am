@@ -1,0 +1,44 @@
+version: '3.5'
+
+services:
+    openam:
+        image: forgerock-docker-public.bintray.io/forgerock/am:latest
+        ports:
+        - "8080:8080"
+        restart: always
+        container_name: openam
+        networks:
+            - example.com
+        environment:
+            AM_ADMIN_PWD: Infosys@123
+            AM_DEMO_PWD: Infosys@123
+            AM_HOST_NAME: openam.example.com
+            AM_COOKIE_DOMAIN: .example.com
+
+    openig:
+        image: forgerock-docker-public.bintray.io/forgerock/ig:latest
+        container_name: openig
+        ports:
+        - "8081:8080"
+        - "8009:8009"
+        restart: always
+        networks:
+            - example.com
+
+    app:
+        container_name: app
+        build:
+            context: .
+            dockerfile: IG-sample-application.dockefile
+        image: malotian/forgerock/example:latest
+        ports:
+        - "8082:8081"
+        restart: always
+        networks:
+            - example.com
+
+networks:
+    example.com:
+       driver: bridge
+       name: example.com
+

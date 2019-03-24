@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+    app:
+        container_name: app
+        build:
+            context: .
+            dockerfile: IG-sample-application.dockefile
+        image: malotian/forgerock/example:latest
+        ports:
+        - "8082:8081"
+        restart: always
+        networks:
+            - example.com
+
+networks:
+    example.com:
+       driver: bridge
+       name: example.com
+

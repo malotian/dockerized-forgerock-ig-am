@@ -1,0 +1,7 @@
+FROM java:8
+WORKDIR /
+ADD IG-sample-application-6.5.0.jar IG-sample-application-6.5.0.jar
+EXPOSE 8081/tcp
+EXPOSE 8444/tcp
+CMD java -jar IG-sample-application-6.5.0.jar
+
