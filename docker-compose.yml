@@ -10,8 +10,8 @@ services:
         networks:
             - example.com
         environment:
-            AM_ADMIN_PWD: Infosys@123
-            AM_DEMO_PWD: Infosys@123
+            AM_ADMIN_PWD: Test@123
+            AM_DEMO_PWD: Test@123
             AM_HOST_NAME: openam.example.com
             AM_COOKIE_DOMAIN: .example.com
 
